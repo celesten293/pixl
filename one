@@ -1,0 +1,27 @@
+const table = document.getElementById('pixelCanvas');
+var height = document.getElementById('inputHeight').value;
+var width = document.getElementById('inputWidth').value;
+const submit = document.getElementById('submitButton');
+
+var colorChoice = document.getElementById('colorPicker');
+var size = document.getElementById('sizePicker');
+
+submit.addEventListener("click", function(event) {
+  event.preventDefault();
+  makeGrid(height, width);
+});
+
+function makeGrid(height, width) {
+//table.innerHTML = ""
+  for (let m=0; m < height; m++){
+//    var row = table.insertRow(m);
+    var row = document.createElement('tr');
+      for (let n=0; n < width; n++){
+//        row.insertCell(n);
+          var cell = document.createElement('td');
+//          cell.addEventListener('click', colorChoice);
+          row.appendChild(cell);
+    }
+    table.appendChild(row);
+  }
+}
