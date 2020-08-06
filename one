@@ -1,25 +1,25 @@
 const table = document.getElementById('pixelCanvas');
-var height = document.getElementById('inputHeight').value;
-var width = document.getElementById('inputWidth').value;
 const submit = document.getElementById('submitButton');
 
-var colorChoice = document.getElementById('colorPicker');
-var size = document.getElementById('sizePicker');
 
 submit.addEventListener("click", function(event) {
   event.preventDefault();
+  var height = document.getElementById('inputHeight').value;
+  var width = document.getElementById('inputWidth').value;
   makeGrid(height, width);
 });
-
+// loop over height and width input to create rows and columns(cells).
 function makeGrid(height, width) {
-//table.innerHTML = ""
+// reset table each time submit button is pressed
+table.innerHTML = " ";
   for (let m=0; m < height; m++){
-//    var row = table.insertRow(m);
     var row = document.createElement('tr');
       for (let n=0; n < width; n++){
-//        row.insertCell(n);
-          var cell = document.createElement('td');
-//          cell.addEventListener('click', colorChoice);
+        var cell = document.createElement('td');
+        cell.addEventListener("click", function(event) {
+          var colorChoice = document.getElementById('colorPicker');
+          cell.style.backgroundColor = colorChoice;
+          });
           row.appendChild(cell);
     }
     table.appendChild(row);
